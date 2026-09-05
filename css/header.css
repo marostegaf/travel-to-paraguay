@@ -13,3 +13,13 @@
 .header img {
     cursor: pointer;
 }
+
+@media (max-width: 1000px) {
+    .header img {
+        max-width: 100px;
+    }
+    
+    .header {
+        padding: 20px 40px;
+    }
+}

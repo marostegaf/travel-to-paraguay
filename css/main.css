@@ -7,6 +7,7 @@
 }
 
 .main {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,14 +69,13 @@
     cursor: pointer;
 }
 
-
 .main-preco {
     display: flex;
     gap: 20px;
 }
 
 .preco-especifico {
-    min-width: 460px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -116,4 +116,17 @@
 .informacao span {
     color: var(--cor-1);
     font-weight: 400;
+}
+
+@media (max-width: 1000px) {
+    .main {
+        padding: 0 40px;
+    }
+    .main-preco {
+        flex-direction: column;
+    }
+
+    .preco-especifico h2 {
+        font-size: 48px;
+    }
 }

@@ -9,3 +9,9 @@
 .footer p {
     color: var(--cor-1);
 }
+
+@media (max-width: 1000px) {
+    .footer {
+        padding: 20px 40px;
+    }
+}
