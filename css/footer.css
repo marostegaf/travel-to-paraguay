@@ -1,0 +1,11 @@
+.footer-bg {
+    background-color: var(--cor-4);
+}
+
+.footer {
+    padding: 48px 0px;
+}
+
+.footer p {
+    color: var(--cor-1);
+}

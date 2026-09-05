@@ -1,0 +1,30 @@
+:root {
+    --cor-0: #FFFFFF;
+    --cor-1: #C2C2C2;
+    --cor-2: #484848;
+    --cor-3: #1E1E1E;
+    --cor-4: #100F0F;
+
+    --cor-p0: #40A5A7;
+    --cor-p1: #0F3D3E;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.font-roboto {
+    font-family: "Roboto", sans-serif;
+}
+
+.font-inter {
+    font-family: "Inter", sans-serif;
+}
+
+.font-manrope {
+    font-family: "Manrope", sans-serif;
+}

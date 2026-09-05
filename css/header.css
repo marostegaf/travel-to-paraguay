@@ -1,0 +1,15 @@
+.header-bg {
+    background-color: var(--cor-4);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 48px 0px;
+}
+
+.header img {
+    cursor: pointer;
+}
