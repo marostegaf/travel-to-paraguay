@@ -75,6 +75,10 @@
     gap: 20px;
 }
 
+.main-preco img {
+    margin-top: 4px;
+}
+
 .preco-especifico {
     width: 100%;
     display: flex;

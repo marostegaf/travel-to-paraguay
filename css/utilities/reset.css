@@ -8,6 +8,10 @@ img {
     max-width: 100%;
 }
 
+img[src="img/usd.svg"] {
+    border-radius: px;
+}
+
 .container {
     max-width: 940px;
     margin: 0 auto;
