@@ -16,7 +16,7 @@ if (form) {
         JSON.stringify(configuracoes)
     )
 
-    console.log(configuracoes);
+    window.location.href = "index.html";
     });
 }
 
