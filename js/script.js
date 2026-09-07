@@ -1,14 +1,18 @@
-const url = window.location.search;
-const parametros = new URLSearchParams(url);
-const valor = parametros.get("valor");
+const form = document.querySelector("#settings-form");
 
-const dolarAmericano = document.querySelector("#dolar");
-dolarAmericano.innerText = valor;
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-const realBrasileiro = document.querySelector("#real");
+    const configuracoes = {
+        spread: Number(document.querySelector("#spread").value),
+        iof: Number(document.querySelector("#iof").value),
+        ptax: Number(document.querySelector("#ptax").value)
+    }
 
-function realizarCalculoDeValorConvertido(valor, spread, iof, ptax) {
-    return valorFinal = valor * ptax * (1 + spread / 100) * (1 + iof / 100);
-}
+    localStorage.setItem(
+        "settings",
+        JSON.stringify(configuracoes)
+    )
 
-realBrasileiro.innerText = realizarCalculoDeValorConvertido(valor, 0, 3.5, 5.20).toFixed(2);
+    console.log(configuracoes);
+});
