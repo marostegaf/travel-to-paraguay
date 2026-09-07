@@ -1,6 +1,8 @@
+// settings.html
 const form = document.querySelector("#settings-form");
 
-form.addEventListener("submit", (event) => {
+if (form) {
+    form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const configuracoes = {
@@ -15,4 +17,29 @@ form.addEventListener("submit", (event) => {
     )
 
     console.log(configuracoes);
-});
+    });
+}
+
+// index.html
+const settings = localStorage.getItem("settings");
+
+function colocarValorNoElemento(valor, elemento) {
+    elementoModificado = document.querySelector(elemento);
+
+    if (elemento === "#spread" || elemento === "#iof") {
+        elementoModificado.innerText = valor + "%"
+    } else {
+        elementoModificado.innerText = "R$ " + valor.toFixed(2);
+    }
+}
+
+if (settings) {
+    const settingsUser = JSON.parse(settings)
+
+    const spread = settingsUser.spread;
+    colocarValorNoElemento(spread, "#spread")
+    const iof = settingsUser.iof;
+    colocarValorNoElemento(iof, "#iof")
+    const ptax = settingsUser.ptax;
+    colocarValorNoElemento(ptax, "#ptax")
+}
