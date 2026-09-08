@@ -1,8 +1,8 @@
 // settings.html
-const form = document.querySelector("#settings-form");
+const formSettings = document.querySelector("#settings-form");
 
-if (form) {
-    form.addEventListener("submit", (event) => {
+if (formSettings) {
+    formSettings.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const configuracoes = {
@@ -22,24 +22,56 @@ if (form) {
 
 // index.html
 const settings = localStorage.getItem("settings");
+const settingsUser = JSON.parse(settings)
 
 function colocarValorNoElemento(valor, elemento) {
     elementoModificado = document.querySelector(elemento);
 
-    if (elemento === "#spread" || elemento === "#iof") {
-        elementoModificado.innerText = valor + "%"
-    } else {
-        elementoModificado.innerText = "R$ " + valor.toFixed(2);
-    }
-}
+    elemento === "#spread" || elemento === "#iof" ? elementoModificado.innerText = valor + "%" : elementoModificado.innerText = "R$ " + valor.toFixed(2);
+};
 
 if (settings) {
-    const settingsUser = JSON.parse(settings)
+    colocarValorNoElemento(settingsUser.spread, "#spread")
+    colocarValorNoElemento(settingsUser.iof, "#iof")
+    colocarValorNoElemento(settingsUser.ptax, "#ptax")
+};
 
-    const spread = settingsUser.spread;
-    colocarValorNoElemento(spread, "#spread")
-    const iof = settingsUser.iof;
-    colocarValorNoElemento(iof, "#iof")
-    const ptax = settingsUser.ptax;
-    colocarValorNoElemento(ptax, "#ptax")
-}
+const formCalculo = document.querySelector("#form-calculo");
+
+if (formCalculo) {
+    formCalculo.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const valor = Number(document.querySelector("#valor").value);
+
+        let spread = 0;
+        let iof = 0;
+        let ptax = 5;
+
+        if (settings) {
+            spread = settingsUser.spread;
+            iof = settingsUser.iof;
+            ptax = settingsUser.ptax;
+        }
+
+        const valorComSpread = valor * (1 + spread / 100);
+        const taxaSpread = valorComSpread - valor;
+
+        const valorComIOF = valorComSpread * (1 + iof / 100);
+        const taxaIof = valorComIOF - valorComSpread;
+
+        const valorEmReais = valorComIOF * ptax;
+
+         document.querySelector("#spreadConvertido").innerText =
+            `R$ ${taxaSpread.toFixed(2)}`;
+
+        document.querySelector("#iofConvertido").innerText =
+            `R$ ${taxaIof.toFixed(2)}`;
+
+        document.querySelector("#dolar").innerText =
+            `${valor.toFixed(2)}`;
+
+        document.querySelector("#real").innerText =
+             `${valorEmReais.toFixed(2)}`
+    })
+};
